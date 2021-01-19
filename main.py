@@ -1,5 +1,5 @@
 for i in range(1,10):
-  print(i*8)
+  print(i*20)
 
 
 
