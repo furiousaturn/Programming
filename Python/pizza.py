@@ -25,13 +25,15 @@ class Pizza:
     def __init__(self, custId):
         self.custId = custId
         self.size = self.getSize()
-        self.topping= self.getTopping()
-        self.cost = self.getCost()
+        self.topping = self.getTopping()
+        self.cost = self.size+self.topping
 
     def printPizzaDetails(self,custId):
         return self.custId, self.size, self.topping,self.cost
 
     def getSize(self):
+        #validation required
+
         print("Pizza size:")
         print("=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=")
         print("1=small, 2=Medium, 3=Large >")
@@ -43,18 +45,38 @@ class Pizza:
 
     
     def getTopping(self): 
-        return Pizza.topping1
+        #validation required
+        
+        print("Toppings:")
+        print("=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=")
+        print("1, 2, 3 or 4 (or more) > ")
+
+        toppings=int(input("Enter no. of toppings >" ))
+        if (toppings  == 1): return Pizza.topping1
+        elif (toppings == 2): return Pizza.topping2
+        elif (toppings == 3): return Pizza.topping3
+        elif (toppings == 4): return Pizza.toppingMore
     
-    def getCost(self):
-        return 3.40
-
-
-
 #main program
+#Initialise list, number of pizzas for custId = 0
 customer=[]
-customer.append(Customer(0))
-print(customer[0].printCustomerDetails())
+custId=0
 
 pizza=[]
-pizza.append(Pizza(0))
-print(pizza[0].printPizzaDetails(0))
+noOfPizzas=2
+
+#create a customer id=0
+customer.append(Customer(custId))
+
+#repeat for noOfPizzas
+for loop in range(noOfPizzas):
+    pizza.append(Pizza(custId))
+
+print("Customer id=0")
+print("-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-==---=")
+print(customer[custId].printCustomerDetails())
+
+print("-=-=--=-Pizzas ordered, Custid = 0-=-=---=-")
+
+for loop in range(noOfPizzas):
+    print(pizza[loop].printPizzaDetails(custId))
