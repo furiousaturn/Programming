@@ -6,7 +6,7 @@ class Customer:
         self.name=self.getCustomerDetails("name")
         self.address=self.getCustomerDetails("address")
         self.phone=self.getCustomerDetails("phone")
-
+        
     #methods
     def printCustomerDetails(self):
         return self.id, self.name,self.address,self.phone
@@ -58,25 +58,43 @@ class Pizza:
         elif (toppings == 4): return Pizza.toppingMore
     
 #main program
-#Initialise list, number of pizzas for custId = 0
+#Initialise customer (custId=0), wanting 2 pizzas + delivery charge
 customer=[]
 custId=0
-
 pizza=[]
 noOfPizzas=2
+deliveryCharge = 2.50
 
-#create a customer id=0
+#create instance of customer id=0 - Object
 customer.append(Customer(custId))
 
-#repeat for noOfPizzas
+#create instances for 2 pizzas for customer (custID=0) - Objects
 for loop in range(noOfPizzas):
     pizza.append(Pizza(custId))
 
+#Output Customer and pizza order data 
+#This data can be presented with correct formatting
+#This formatting to be done inside printCustomerDetails method
 print("Customer id=0")
 print("-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-==---=")
 print(customer[custId].printCustomerDetails())
 
-print("-=-=--=-Pizzas ordered, Custid = 0-=-=---=-")
 
+print("-=-=--=-Pizzas ordered, Custid = 0-=-=---=-")
+#This data can be presented with correct formatting
+#This formatting to be done inside printPizzaDetails method
+#Use of loop to calculate total cost
+totalCost=0.0
 for loop in range(noOfPizzas):
     print(pizza[loop].printPizzaDetails(custId))
+    totalCost +=float(pizza[loop].cost)
+
+
+#Output the application of discount
+#Output total cost of order including delivery
+if totalCost >20.0:
+    totalCost -=(totalCost*0.1)
+
+print("Total Cost = £{:.2f}".format(totalCost))
+print("Including delivery charge @ £{:.2f}".format(deliveryCharge))
+print("Overall Total cost = £{:.2f}".format(totalCost+deliveryCharge))
