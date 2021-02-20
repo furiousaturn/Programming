@@ -4,7 +4,7 @@ class Customer:
         self.amountGBP = self.getAmountGBP()
         self.amountCurrency = self.getCurrencyRate()
         self.transactionFee = self.getTransactionFee(self.amountCurrency)
-        self.totalCost = self.amountGBP + self.transactionFee
+        self.totalCost = self.amountGBP + (self.amountGBP * self.transactionFee)
         self.staffMember = self.isStaff()
 
     def getAmountGBP(self):
@@ -39,20 +39,14 @@ class Customer:
 #MAIN PROGRAM
 customer = Customer()
 
-print(customer.amountGBP)
-print(customer.amountCurrency)
-print(customer.transactionFee)
-
+print("-=-=----=-=-=-=-=-=-=-==-=--=-=--=-=--==----=-=--=-==--=-")
+print("Amount in GBP = £{:.2f}".format(customer.amountGBP))
+print("@ Exchange Rate of £{:.2f}".format(customer.amountCurrency))
+print("With Transaction Fee applied of £{:.2f}".format(customer.transactionFee))
+print("-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
 if customer.staffMember:
     print("Staff discount amount = {:.2f}".format(float(customer.totalCost)*0.05))
     print("Total cost = {:.2f} ".format(float(customer.totalCost)*0.95))
 else:
     print("Total cost = {:.2f}".format(float(customer.totalCost)))
-
-
-
-
-
-
-
-
+print("-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-")
