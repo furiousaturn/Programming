@@ -63,7 +63,7 @@ def radCall():
     if radSel == 3: win.configure(background=COLOR3)
 
 
-# create three radiobuttons using one variable
+# create three radio buttons using one variable
 radVar = tk.IntVar()
 
 rad1 = tk.Radiobutton(win, text=COLOR1, variable=radVar, value=1, command=radCall)
